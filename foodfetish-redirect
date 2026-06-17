@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodFetish</title>
+    <style>
+        body { background-color: #1a1a1a; color: white; font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .btn { margin-top: 20px; padding: 15px 30px; background-color: #FF6B81; color: white; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 18px; display: none; }
+    </style>
+</head>
+<body>
+    <h2 id="status">Запускаем FoodFetish...</h2>
+    <a href="exps://u.expo.dev/update/019ed563-9d6e-7aba-bdc3-d45db4855690" class="btn" id="fallback-btn">Открыть приложение</a>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const path = params.get('path');
+
+        let expoLink = "exps://u.expo.dev/update/019ed563-9d6e-7aba-bdc3-d45db4855690";
+
+        if (path) {
+            expoLink = expoLink + "/--/" + path;
+        }
+        window.location.href = expoLink;
+        setTimeout(() => {
+            document.getElementById('status').innerText = "Нажми кнопку ниже, чтобы открыть";
+            document.getElementById('fallback-btn').href = expoLink;
+            document.getElementById('fallback-btn').style.display = "block";
+        }, 1000);
+    </script>
+</body>
+</html>
